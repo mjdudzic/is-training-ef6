@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Ef6.ConsoleApp.Benchmark", "Training.Ef6.ConsoleApp.Benchmark\Training.Ef6.ConsoleApp.Benchmark.csproj", "{7FC77AC1-1FE0-46C5-A5D8-7455A7A085DC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Ef6.Infrastructure", "Training.Ef6.Infrastructure\Training.Ef6.Infrastructure.csproj", "{BD4C8FB8-0914-4155-998A-E030406F9A45}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FC77AC1-1FE0-46C5-A5D8-7455A7A085DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC77AC1-1FE0-46C5-A5D8-7455A7A085DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC77AC1-1FE0-46C5-A5D8-7455A7A085DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC77AC1-1FE0-46C5-A5D8-7455A7A085DC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD4C8FB8-0914-4155-998A-E030406F9A45}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD4C8FB8-0914-4155-998A-E030406F9A45}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD4C8FB8-0914-4155-998A-E030406F9A45}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD4C8FB8-0914-4155-998A-E030406F9A45}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38B5EA59-4414-4CF9-BCEE-470CCE470B69}
+	EndGlobalSection
+EndGlobal

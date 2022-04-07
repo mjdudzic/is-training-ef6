@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1b96f0c2109143d79a3cdbc8542c27d5" Name="Diagram1">
+        <EntityTypeShape EntityType="StackOverflow2010Model.Badge" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.Comment" Width="1.5" PointX="3" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.LinkType" Width="1.5" PointX="6" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.PostLink" Width="1.5" PointX="8.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.Post" Width="1.5" PointX="6" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.PostType" Width="1.5" PointX="3.75" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.User" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.Vote" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StackOverflow2010Model.VoteType" Width="1.5" PointX="0.75" PointY="12.875" IsExpanded="true" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Badges_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Comments_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Comments_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_PostLinks_LinkTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_PostLinks_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_PostLinks_Posts2" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Posts_Posts1" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Posts_Posts2" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Posts_PostTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Posts_Users1" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Posts_Users2" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Votes_Users" ManuallyRouted="false" />
+        <AssociationConnector Association="StackOverflow2010Model.FK_Votes_VoteTypes" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
