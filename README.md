@@ -36,3 +36,7 @@ Next following scripts must be executed for the attached database `[respository 
 - schema_fix.sql
 
 These scripts provide data and schema updates
+
+## Verify solution works
+
+Open the solution and run Training.Ef6.ConsoleApp.Benchmark app. If everything is OK the only app output is “Database connection works OK”.
