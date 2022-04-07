@@ -11,7 +11,7 @@ There are to approaches to prepare the database
 
 ### Download already prepared database
 
-Database files (7z) with proper schema required for training purpose file can be downloaded from xxx
+Database files (7z) with proper schema required for training purpose file can be downloaded from https://drive.google.com/file/d/1xwjPQ-d6AtzfOGN_AgZKNkgB-XrjtBop/view?usp=sharing
 
 It is the database downloaded from https://www.brentozar.com/archive/2015/10/how-to-download-the-stack-overflow-database-via-bittorrent/ with some data and schema fix alrady provided.
 
