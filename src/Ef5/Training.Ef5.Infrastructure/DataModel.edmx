@@ -1,0 +1,868 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="StackOverflow2010Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__ViewCache">
+          <Key>
+            <PropertyRef Name="ConceptualModelContainerName" />
+            <PropertyRef Name="StoreModelContainerName" />
+          </Key>
+          <Property Name="ConceptualModelContainerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="StoreModelContainerName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ViewDefinitions" Type="nvarchar(max)" />
+          <Property Name="LastUpdated" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Badges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Comments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" />
+          <Property Name="Text" Type="nvarchar" MaxLength="700" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+        </EntityType>
+        <EntityType Name="LinkTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostLinks">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="RelatedPostId" Type="int" Nullable="false" />
+          <Property Name="LinkTypeId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Posts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AcceptedAnswerId" Type="int" />
+          <Property Name="AnswerCount" Type="int" />
+          <Property Name="Body" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ClosedDate" Type="datetime" />
+          <Property Name="CommentCount" Type="int" />
+          <Property Name="CommunityOwnedDate" Type="datetime" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="FavoriteCount" Type="int" />
+          <Property Name="LastActivityDate" Type="datetime" Nullable="false" />
+          <Property Name="LastEditDate" Type="datetime" />
+          <Property Name="LastEditorDisplayName" Type="nvarchar" MaxLength="40" />
+          <Property Name="LastEditorUserId" Type="int" />
+          <Property Name="OwnerUserId" Type="int" />
+          <Property Name="ParentId" Type="int" />
+          <Property Name="PostTypeId" Type="int" Nullable="false" />
+          <Property Name="Score" Type="int" Nullable="false" />
+          <Property Name="Tags" Type="nvarchar" MaxLength="150" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" />
+          <Property Name="ViewCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PostTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AboutMe" Type="nvarchar(max)" />
+          <Property Name="Age" Type="int" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="DownVotes" Type="int" Nullable="false" />
+          <Property Name="EmailHash" Type="nvarchar" MaxLength="40" />
+          <Property Name="LastAccessDate" Type="datetime" Nullable="false" />
+          <Property Name="Location" Type="nvarchar" MaxLength="100" />
+          <Property Name="Reputation" Type="int" Nullable="false" />
+          <Property Name="UpVotes" Type="int" Nullable="false" />
+          <Property Name="Views" Type="int" Nullable="false" />
+          <Property Name="WebsiteUrl" Type="nvarchar" MaxLength="200" />
+          <Property Name="AccountId" Type="int" />
+          <Property Name="Region" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="Votes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PostId" Type="int" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="BountyAmount" Type="int" />
+          <Property Name="VoteTypeId" Type="int" Nullable="false" />
+          <Property Name="CreationDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VoteTypes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Badges_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Badges" Type="Self.Badges" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Badges">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_LinkTypes">
+          <End Role="LinkTypes" Type="Self.LinkTypes" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LinkTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="LinkTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_Posts2">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLinks" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="RelatedPostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Posts1">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+          <End Role="Posts1" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Posts2">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="0..1" />
+          <End Role="Posts1" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts1">
+              <PropertyRef Name="AcceptedAnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PostTypes">
+          <End Role="PostTypes" Type="Self.PostTypes" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="PostTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Users1">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="OwnerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Users2">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Posts" Type="Self.Posts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="LastEditorUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Votes_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Votes" Type="Self.Votes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Votes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Votes_VoteTypes">
+          <End Role="VoteTypes" Type="Self.VoteTypes" Multiplicity="1" />
+          <End Role="Votes" Type="Self.Votes" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoteTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Votes">
+              <PropertyRef Name="VoteTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StackOverflow2010ModelStoreContainer">
+          <EntitySet Name="__ViewCache" EntityType="Self.__ViewCache" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Badges" EntityType="Self.Badges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Comments" EntityType="Self.Comments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LinkTypes" EntityType="Self.LinkTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostLinks" EntityType="Self.PostLinks" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostTypes" EntityType="Self.PostTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Votes" EntityType="Self.Votes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VoteTypes" EntityType="Self.VoteTypes" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Badges_Users" Association="Self.FK_Badges_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Badges" EntitySet="Badges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_LinkTypes" Association="Self.FK_PostLinks_LinkTypes">
+            <End Role="LinkTypes" EntitySet="LinkTypes" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_Posts" Association="Self.FK_PostLinks_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_Posts2" Association="Self.FK_PostLinks_Posts2">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Posts1" Association="Self.FK_Posts_Posts1">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Posts1" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Posts2" Association="Self.FK_Posts_Posts2">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Posts1" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PostTypes" Association="Self.FK_Posts_PostTypes">
+            <End Role="PostTypes" EntitySet="PostTypes" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Users1" Association="Self.FK_Posts_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Users2" Association="Self.FK_Posts_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_Users" Association="Self.FK_Votes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Votes" EntitySet="Votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_VoteTypes" Association="Self.FK_Votes_VoteTypes">
+            <End Role="VoteTypes" EntitySet="VoteTypes" />
+            <End Role="Votes" EntitySet="Votes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="StackOverflow2010Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C__ViewCache">
+          <Key>
+            <PropertyRef Name="ConceptualModelContainerName" />
+            <PropertyRef Name="StoreModelContainerName" />
+          </Key>
+          <Property Name="ConceptualModelContainerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StoreModelContainerName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ViewDefinitions" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastUpdated" Type="DateTimeOffset" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="Badge">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Badges_Users" FromRole="Badges" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Comment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" />
+          <Property Name="Text" Type="String" MaxLength="700" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_Comments_Posts" FromRole="Comments" ToRole="Posts" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Comments_Users" FromRole="Comments" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="LinkType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="PostLinks" Relationship="Self.FK_PostLinks_LinkTypes" FromRole="LinkTypes" ToRole="PostLinks" />
+        </EntityType>
+        <EntityType Name="PostLink">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="RelatedPostId" Type="Int32" Nullable="false" />
+          <Property Name="LinkTypeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="LinkType" Relationship="Self.FK_PostLinks_LinkTypes" FromRole="PostLinks" ToRole="LinkTypes" />
+          <NavigationProperty Name="Post" Relationship="Self.FK_PostLinks_Posts" FromRole="PostLinks" ToRole="Posts" />
+          <NavigationProperty Name="Post1" Relationship="Self.FK_PostLinks_Posts2" FromRole="PostLinks" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="Post">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AcceptedAnswerId" Type="Int32" />
+          <Property Name="AnswerCount" Type="Int32" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClosedDate" Type="DateTime" Precision="3" />
+          <Property Name="CommentCount" Type="Int32" />
+          <Property Name="CommunityOwnedDate" Type="DateTime" Precision="3" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FavoriteCount" Type="Int32" />
+          <Property Name="LastActivityDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LastEditDate" Type="DateTime" Precision="3" />
+          <Property Name="LastEditorDisplayName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LastEditorUserId" Type="Int32" />
+          <Property Name="OwnerUserId" Type="Int32" />
+          <Property Name="ParentId" Type="Int32" />
+          <Property Name="PostTypeId" Type="Int32" Nullable="false" />
+          <Property Name="Score" Type="Int32" Nullable="false" />
+          <Property Name="Tags" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ViewCount" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Posts" FromRole="Posts" ToRole="Comments" />
+          <NavigationProperty Name="PostLinks" Relationship="Self.FK_PostLinks_Posts" FromRole="Posts" ToRole="PostLinks" />
+          <NavigationProperty Name="PostLinks1" Relationship="Self.FK_PostLinks_Posts2" FromRole="Posts" ToRole="PostLinks" />
+          <NavigationProperty Name="Posts1" Relationship="Self.FK_Posts_Posts1" FromRole="Posts" ToRole="Posts1" />
+          <NavigationProperty Name="Post1" Relationship="Self.FK_Posts_Posts1" FromRole="Posts1" ToRole="Posts" />
+          <NavigationProperty Name="Posts11" Relationship="Self.FK_Posts_Posts2" FromRole="Posts" ToRole="Posts1" />
+          <NavigationProperty Name="Post2" Relationship="Self.FK_Posts_Posts2" FromRole="Posts1" ToRole="Posts" />
+          <NavigationProperty Name="PostType" Relationship="Self.FK_Posts_PostTypes" FromRole="Posts" ToRole="PostTypes" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Posts_Users1" FromRole="Posts" ToRole="Users" />
+          <NavigationProperty Name="User1" Relationship="Self.FK_Posts_Users2" FromRole="Posts" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="PostType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_PostTypes" FromRole="PostTypes" ToRole="Posts" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AboutMe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Age" Type="Int32" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DisplayName" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DownVotes" Type="Int32" Nullable="false" />
+          <Property Name="EmailHash" Type="String" MaxLength="40" FixedLength="false" Unicode="true" />
+          <Property Name="LastAccessDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Location" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Reputation" Type="Int32" Nullable="false" />
+          <Property Name="UpVotes" Type="Int32" Nullable="false" />
+          <Property Name="Views" Type="Int32" Nullable="false" />
+          <Property Name="WebsiteUrl" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="AccountId" Type="Int32" />
+          <Property Name="Region" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Badges" Relationship="Self.FK_Badges_Users" FromRole="Users" ToRole="Badges" />
+          <NavigationProperty Name="Comments" Relationship="Self.FK_Comments_Users" FromRole="Users" ToRole="Comments" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_Posts_Users1" FromRole="Users" ToRole="Posts" />
+          <NavigationProperty Name="Posts1" Relationship="Self.FK_Posts_Users2" FromRole="Users" ToRole="Posts" />
+          <NavigationProperty Name="Votes" Relationship="Self.FK_Votes_Users" FromRole="Users" ToRole="Votes" />
+        </EntityType>
+        <EntityType Name="Vote">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostId" Type="Int32" Nullable="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="BountyAmount" Type="Int32" />
+          <Property Name="VoteTypeId" Type="Int32" Nullable="false" />
+          <Property Name="CreationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Votes_Users" FromRole="Votes" ToRole="Users" />
+          <NavigationProperty Name="VoteType" Relationship="Self.FK_Votes_VoteTypes" FromRole="Votes" ToRole="VoteTypes" />
+        </EntityType>
+        <EntityType Name="VoteType">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Votes" Relationship="Self.FK_Votes_VoteTypes" FromRole="VoteTypes" ToRole="Votes" />
+        </EntityType>
+        <Association Name="FK_Badges_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Badges" Type="Self.Badge" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Badges">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Comments_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Comments" Type="Self.Comment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Comments">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_LinkTypes">
+          <End Role="LinkTypes" Type="Self.LinkType" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="LinkTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="LinkTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_Posts">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostLinks_Posts2">
+          <End Role="Posts" Type="Self.Post" Multiplicity="1" />
+          <End Role="PostLinks" Type="Self.PostLink" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PostLinks">
+              <PropertyRef Name="RelatedPostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Posts1">
+          <End Role="Posts" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Posts1" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts1">
+              <PropertyRef Name="ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Posts2">
+          <End Role="Posts" Type="Self.Post" Multiplicity="0..1" />
+          <End Role="Posts1" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts1">
+              <PropertyRef Name="AcceptedAnswerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_PostTypes">
+          <End Role="PostTypes" Type="Self.PostType" Multiplicity="1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PostTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="PostTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Users1">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="OwnerUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Posts_Users2">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Posts" Type="Self.Post" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Posts">
+              <PropertyRef Name="LastEditorUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Votes_Users">
+          <End Role="Users" Type="Self.User" Multiplicity="0..1" />
+          <End Role="Votes" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Votes">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Votes_VoteTypes">
+          <End Role="VoteTypes" Type="Self.VoteType" Multiplicity="1" />
+          <End Role="Votes" Type="Self.Vote" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="VoteTypes">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Votes">
+              <PropertyRef Name="VoteTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="StackOverflow2010Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__ViewCache" EntityType="Self.C__ViewCache" />
+          <EntitySet Name="Badges" EntityType="Self.Badge" />
+          <EntitySet Name="Comments" EntityType="Self.Comment" />
+          <EntitySet Name="LinkTypes" EntityType="Self.LinkType" />
+          <EntitySet Name="PostLinks" EntityType="Self.PostLink" />
+          <EntitySet Name="Posts" EntityType="Self.Post" />
+          <EntitySet Name="PostTypes" EntityType="Self.PostType" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <EntitySet Name="Votes" EntityType="Self.Vote" />
+          <EntitySet Name="VoteTypes" EntityType="Self.VoteType" />
+          <AssociationSet Name="FK_Badges_Users" Association="Self.FK_Badges_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Badges" EntitySet="Badges" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Posts" Association="Self.FK_Comments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Comments_Users" Association="Self.FK_Comments_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Comments" EntitySet="Comments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_LinkTypes" Association="Self.FK_PostLinks_LinkTypes">
+            <End Role="LinkTypes" EntitySet="LinkTypes" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_Posts" Association="Self.FK_PostLinks_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostLinks_Posts2" Association="Self.FK_PostLinks_Posts2">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostLinks" EntitySet="PostLinks" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Posts1" Association="Self.FK_Posts_Posts1">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Posts1" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Posts2" Association="Self.FK_Posts_Posts2">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="Posts1" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_PostTypes" Association="Self.FK_Posts_PostTypes">
+            <End Role="PostTypes" EntitySet="PostTypes" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Users1" Association="Self.FK_Posts_Users1">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Posts_Users2" Association="Self.FK_Posts_Users2">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Posts" EntitySet="Posts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_Users" Association="Self.FK_Votes_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Votes" EntitySet="Votes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Votes_VoteTypes" Association="Self.FK_Votes_VoteTypes">
+            <End Role="VoteTypes" EntitySet="VoteTypes" />
+            <End Role="Votes" EntitySet="Votes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="StackOverflow2010ModelStoreContainer" CdmEntityContainer="StackOverflow2010Entities">
+          <EntitySetMapping Name="C__ViewCache">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.C__ViewCache">
+              <MappingFragment StoreEntitySet="__ViewCache">
+                <ScalarProperty Name="ConceptualModelContainerName" ColumnName="ConceptualModelContainerName" />
+                <ScalarProperty Name="StoreModelContainerName" ColumnName="StoreModelContainerName" />
+                <ScalarProperty Name="ViewDefinitions" ColumnName="ViewDefinitions" />
+                <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Badges">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.Badge">
+              <MappingFragment StoreEntitySet="Badges">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Comments">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.Comment">
+              <MappingFragment StoreEntitySet="Comments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LinkTypes">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.LinkType">
+              <MappingFragment StoreEntitySet="LinkTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostLinks">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.PostLink">
+              <MappingFragment StoreEntitySet="PostLinks">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="RelatedPostId" ColumnName="RelatedPostId" />
+                <ScalarProperty Name="LinkTypeId" ColumnName="LinkTypeId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Posts">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.Post">
+              <MappingFragment StoreEntitySet="Posts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AcceptedAnswerId" ColumnName="AcceptedAnswerId" />
+                <ScalarProperty Name="AnswerCount" ColumnName="AnswerCount" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="ClosedDate" ColumnName="ClosedDate" />
+                <ScalarProperty Name="CommentCount" ColumnName="CommentCount" />
+                <ScalarProperty Name="CommunityOwnedDate" ColumnName="CommunityOwnedDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="FavoriteCount" ColumnName="FavoriteCount" />
+                <ScalarProperty Name="LastActivityDate" ColumnName="LastActivityDate" />
+                <ScalarProperty Name="LastEditDate" ColumnName="LastEditDate" />
+                <ScalarProperty Name="LastEditorDisplayName" ColumnName="LastEditorDisplayName" />
+                <ScalarProperty Name="LastEditorUserId" ColumnName="LastEditorUserId" />
+                <ScalarProperty Name="OwnerUserId" ColumnName="OwnerUserId" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="PostTypeId" ColumnName="PostTypeId" />
+                <ScalarProperty Name="Score" ColumnName="Score" />
+                <ScalarProperty Name="Tags" ColumnName="Tags" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ViewCount" ColumnName="ViewCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PostTypes">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.PostType">
+              <MappingFragment StoreEntitySet="PostTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+                <ScalarProperty Name="Age" ColumnName="Age" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="DownVotes" ColumnName="DownVotes" />
+                <ScalarProperty Name="EmailHash" ColumnName="EmailHash" />
+                <ScalarProperty Name="LastAccessDate" ColumnName="LastAccessDate" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Reputation" ColumnName="Reputation" />
+                <ScalarProperty Name="UpVotes" ColumnName="UpVotes" />
+                <ScalarProperty Name="Views" ColumnName="Views" />
+                <ScalarProperty Name="WebsiteUrl" ColumnName="WebsiteUrl" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Votes">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.Vote">
+              <MappingFragment StoreEntitySet="Votes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="PostId" ColumnName="PostId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="BountyAmount" ColumnName="BountyAmount" />
+                <ScalarProperty Name="VoteTypeId" ColumnName="VoteTypeId" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VoteTypes">
+            <EntityTypeMapping TypeName="StackOverflow2010Model.VoteType">
+              <MappingFragment StoreEntitySet="VoteTypes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

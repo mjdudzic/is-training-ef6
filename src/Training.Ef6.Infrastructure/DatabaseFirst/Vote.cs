@@ -20,6 +20,7 @@ namespace Training.Ef6.Infrastructure.DatabaseFirst
         public Nullable<int> BountyAmount { get; set; }
         public int VoteTypeId { get; set; }
         public System.DateTime CreationDate { get; set; }
+        public byte[] RowVersion { get; set; }
     
         public virtual User User { get; set; }
         public virtual VoteType VoteType { get; set; }

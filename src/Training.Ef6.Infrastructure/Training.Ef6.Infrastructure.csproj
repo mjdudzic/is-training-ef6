@@ -34,17 +34,33 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CodeFirstStoreFunctions, Version=1.2.0.0, Culture=neutral, PublicKeyToken=46c4868af4307d2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.CodeFirstStoreFunctions.1.2.0\lib\net45\CodeFirstStoreFunctions.dll</HintPath>
+    </Reference>
+    <Reference Include="EFCache, Version=1.3.3.0, Culture=neutral, PublicKeyToken=46c4868af4307d2c, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Cache.1.3.3\lib\net46\EFCache.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.Filters, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.Filters.0.3.0.0\lib\net40\EntityFramework.Filters.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
+      <HintPath>..\packages\NLog.4.7.15\lib\net45\NLog.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.IO.Compression" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +69,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeFirst\Comment.cs" />
+    <Compile Include="CodeFirst\Post.cs" />
+    <Compile Include="CodeFirst\PostType.cs" />
+    <Compile Include="CodeFirst\StackOverflow2010Context.cs" />
+    <Compile Include="CodeFirst\User.cs" />
     <Compile Include="DatabaseFirst\Badge.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -74,12 +95,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DatabaseFirst\GetDelimitedStringValues_Result.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DatabaseFirst\GetDictionaries_Result.cs">
-      <DependentUpon>DataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DatabaseFirst\GetUserByReputationWithLastPost_Result.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -95,6 +110,7 @@
     <Compile Include="DatabaseFirst\PostType.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseFirst\StackOverflow2010EntitiesNoProxy.cs" />
     <Compile Include="DatabaseFirst\User.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
@@ -104,7 +120,12 @@
     <Compile Include="DatabaseFirst\VoteType.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Extensions\DbContextExtensions.cs" />
+    <Compile Include="Extensions\IQueryableExtensions.cs" />
+    <Compile Include="Interceptors\LogInterceptor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\IPostService.cs" />
+    <Compile Include="Services\PostsService.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -118,6 +139,7 @@
     <None Include="DatabaseFirst\DataModel.edmx.diagram">
       <DependentUpon>DataModel.edmx</DependentUpon>
     </None>
+    <None Include="Interceptors\README.md" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

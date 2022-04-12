@@ -55,6 +55,11 @@ using System.Linq;
 
 <#=Accessibility.ForType(container)#> partial class <#=code.Escape(container)#> : DbContext
 {
+    public <#=code.Escape(container)#>(System.Data.Common.DbConnection dbConnection, bool contextOwnsConnection) 
+        : base(dbConnection, contextOwnsConnection)
+    {
+    }
+
     public <#=code.Escape(container)#>()
         : base("name=<#=container.Name#>")
     {

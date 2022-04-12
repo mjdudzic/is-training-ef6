@@ -17,6 +17,11 @@ namespace Training.Ef6.Infrastructure.DatabaseFirst
     
     public partial class StackOverflow2010Entities : DbContext
     {
+        public StackOverflow2010Entities(System.Data.Common.DbConnection dbConnection, bool contextOwnsConnection) 
+            : base(dbConnection, contextOwnsConnection)
+        {
+        }
+    
         public StackOverflow2010Entities()
             : base("name=StackOverflow2010Entities")
         {
@@ -38,18 +43,23 @@ namespace Training.Ef6.Infrastructure.DatabaseFirst
         public virtual DbSet<VoteType> VoteTypes { get; set; }
     
         [DbFunction("StackOverflow2010Entities", "GetDelimitedStringValues")]
-        public virtual IQueryable<GetDelimitedStringValues_Result> GetDelimitedStringValues(string valuesString)
+        public virtual IQueryable<string> GetDelimitedStringValues(string valuesString)
         {
             var valuesStringParameter = valuesString != null ?
                 new ObjectParameter("ValuesString", valuesString) :
                 new ObjectParameter("ValuesString", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<GetDelimitedStringValues_Result>("[StackOverflow2010Entities].[GetDelimitedStringValues](@ValuesString)", valuesStringParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[StackOverflow2010Entities].[GetDelimitedStringValues](@ValuesString)", valuesStringParameter);
         }
     
-        public virtual ObjectResult<GetDictionaries_Result> GetDictionaries()
+        public virtual ObjectResult<PostType> GetDictionaries()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<GetDictionaries_Result>("GetDictionaries");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PostType>("GetDictionaries");
+        }
+    
+        public virtual ObjectResult<PostType> GetDictionaries(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<PostType>("GetDictionaries", mergeOption);
         }
     
         public virtual ObjectResult<GetUserByReputationWithLastPost_Result> GetUserByReputationWithLastPost(Nullable<int> minReputation)
