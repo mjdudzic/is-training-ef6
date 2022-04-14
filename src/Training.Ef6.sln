@@ -27,11 +27,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.Ef6.LoadTests", "E
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.Ef6.IntegrationTests", "Ef6Tests\Training.Ef6.IntegrationTests\Training.Ef6.IntegrationTests.csproj", "{48D3E6FF-98FC-49DA-82A7-9A81E3FC3EE1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.EfCore.Infrastructure", "EfCore\Training.EfCore.Infrastructure\Training.EfCore.Infrastructure.csproj", "{BAE3FF76-B832-4568-A467-6FF08611746A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.EfCore.Infrastructure", "EfCore\Training.EfCore.Infrastructure\Training.EfCore.Infrastructure.csproj", "{BAE3FF76-B832-4568-A467-6FF08611746A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.EfCore.DemoTests", "EfCore\Training.EfCore.DemoTests\Training.EfCore.DemoTests.csproj", "{F77EAED0-0E6B-4EFA-B62E-F0A7CF276803}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.EfCore.DemoTests", "EfCore\Training.EfCore.DemoTests\Training.EfCore.DemoTests.csproj", "{F77EAED0-0E6B-4EFA-B62E-F0A7CF276803}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.EfCore.WebApp", "EfCore\Training.EfCore.WebApp\Training.EfCore.WebApp.csproj", "{198BF49A-AB36-49BA-BD24-AF7A970E62CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Training.EfCore.WebApp", "EfCore\Training.EfCore.WebApp\Training.EfCore.WebApp.csproj", "{198BF49A-AB36-49BA-BD24-AF7A970E62CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Training.EfCore.ConsoleApp", "EfCore\Training.EfCore.ConsoleApp\Training.EfCore.ConsoleApp.csproj", "{5721B038-4E3A-4B62-96F5-DDCD233A6560}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -87,6 +89,10 @@ Global
 		{198BF49A-AB36-49BA-BD24-AF7A970E62CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{198BF49A-AB36-49BA-BD24-AF7A970E62CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{198BF49A-AB36-49BA-BD24-AF7A970E62CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5721B038-4E3A-4B62-96F5-DDCD233A6560}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5721B038-4E3A-4B62-96F5-DDCD233A6560}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5721B038-4E3A-4B62-96F5-DDCD233A6560}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5721B038-4E3A-4B62-96F5-DDCD233A6560}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -100,6 +106,7 @@ Global
 		{BAE3FF76-B832-4568-A467-6FF08611746A} = {9B66C064-7166-442D-902F-C63850A1B12D}
 		{F77EAED0-0E6B-4EFA-B62E-F0A7CF276803} = {9B66C064-7166-442D-902F-C63850A1B12D}
 		{198BF49A-AB36-49BA-BD24-AF7A970E62CF} = {9B66C064-7166-442D-902F-C63850A1B12D}
+		{5721B038-4E3A-4B62-96F5-DDCD233A6560} = {9B66C064-7166-442D-902F-C63850A1B12D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {38B5EA59-4414-4CF9-BCEE-470CCE470B69}

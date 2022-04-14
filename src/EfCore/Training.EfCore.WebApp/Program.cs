@@ -18,6 +18,12 @@ builder.Services.AddDbContext<StackOverflow2010Context>(options =>
 	options.UseSqlServer(connectionString);
 });
 
+//builder.Services.AddDbContextPool<StackOverflow2010Context>(options =>
+//{
+//	options.EnableDetailedErrors();
+//	options.UseSqlServer(connectionString);
+//});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

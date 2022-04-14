@@ -1,9 +1,9 @@
 using System.Diagnostics;
+using HibernatingRhinos.Profiler.Appender.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Training.EfCore.Infrastructure.Models;
-using Xunit;
 using Xunit.Abstractions;
 using EF6 = System.Data.Entity;
 
@@ -36,6 +36,7 @@ namespace Training.EfCore.DemoTests
 				.Options;
 
 			return new StackOverflow2010Context(options);
+			//return new StackOverflow2010Context();
 		}
 	}
 }

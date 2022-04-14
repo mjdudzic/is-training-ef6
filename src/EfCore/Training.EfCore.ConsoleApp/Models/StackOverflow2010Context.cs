@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace Training.EfCore.Infrastructure.Models
+namespace Training.EfCore.ConsoleApp.Models
 {
 	public partial class StackOverflow2010Context : DbContext
 	{
@@ -29,10 +25,10 @@ namespace Training.EfCore.Infrastructure.Models
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
-			//if (!optionsBuilder.IsConfigured)
-			//{
-			//	optionsBuilder.UseSqlServer("Server=.;Database=StackOverflow2010;Trusted_Connection=True;");
-			//}
+			if (!optionsBuilder.IsConfigured)
+			{
+				optionsBuilder.UseSqlServer("Server=.;Database=StackOverflow2010;Trusted_Connection=True;");
+			}
 		}
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)

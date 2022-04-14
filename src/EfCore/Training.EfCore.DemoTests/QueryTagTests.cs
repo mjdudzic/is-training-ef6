@@ -7,18 +7,18 @@ using Xunit.Abstractions;
 
 namespace Training.EfCore.DemoTests;
 
-public class QueryFilterTests : TestBase
+public class QueryTagTests : TestBase
 {
-	public QueryFilterTests(ITestOutputHelper output) : base(output)
+	public QueryTagTests(ITestOutputHelper output) : base(output)
 	{
 	}
 
 	[Fact]
-	public async Task query_filter_example()
+	public async Task query_with_tag()
 	{
-		// Check the context setup
 		var result = await Context
-			.PostLinks
+			.Posts
+			.TagWith(nameof(query_with_tag))
 			.OrderBy(i => i.Id)
 			.Take(10)
 			.ToListAsync();
