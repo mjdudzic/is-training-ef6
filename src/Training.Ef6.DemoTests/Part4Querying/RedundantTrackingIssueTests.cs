@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using FluentAssertions;
 using Training.Ef6.DemoTests.Common;
+using Training.Ef6.Infrastructure.DatabaseFirst;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -98,6 +99,26 @@ namespace Training.Ef6.DemoTests.Part4Querying
 
 			result.Any().Should().BeTrue();
 			ContextDbFirst.Users.Local.Count.Should().Be(0);
+		}
+
+		[Fact]
+		public async Task test()
+		{
+			var post = GetTestPost();
+			ContextDbFirst.Posts.Add(post);
+			
+			await ContextDbFirst.SaveChangesAsync();
+
+			var user = GetTestUsers(1).First();
+			user.Id = 1;
+
+			ContextDbFirst.Users.Attach(user);
+
+			LogTrackedEntities();
+
+			post.User = user;
+
+			await ContextDbFirst.SaveChangesAsync();
 		}
 	}
 }

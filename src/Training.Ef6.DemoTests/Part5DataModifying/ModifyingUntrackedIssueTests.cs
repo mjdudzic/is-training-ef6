@@ -74,6 +74,8 @@ namespace Training.Ef6.DemoTests.Part4Querying
 			post.Answer.Score += 100;
 			post.Owner.Reputation += 100;
 
+			LogTrackedEntities();
+
 			await ContextDbFirst.SaveChangesAsync();
 
 			post = await GetPost();
