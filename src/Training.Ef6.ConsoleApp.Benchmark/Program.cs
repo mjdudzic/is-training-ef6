@@ -17,21 +17,21 @@ namespace Training.Ef6.ConsoleApp.Benchmark
 	{
 		static async Task Main(string[] args)
 		{
-			//var context = new StackOverflow2010Entities();
+			var context = new StackOverflow2010Entities();
 
-			//var post = await context
-			//	.Posts
-			//	.Where(i => i.OwnerUserId != null)
-			//	.FirstOrDefaultAsync();
+			var post = await context
+				.Posts
+				.Where(i => i.OwnerUserId != null)
+				.FirstOrDefaultAsync();
 
-			//var user = post?.User;
+			var user = post?.User;
 
-			//if (user == null)
-			//	throw new Exception("Database contains no data");
+			if (user == null)
+				throw new Exception("Database contains no data");
 
-			//Console.WriteLine("Database connection works OK");
+			Console.WriteLine("Database connection works OK");
 
-			var result = BenchmarkRunner.Run<EfBenchmark>();
+			//var result = BenchmarkRunner.Run<EfBenchmark>();
 
 		}
 

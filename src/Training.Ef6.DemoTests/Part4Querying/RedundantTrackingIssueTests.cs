@@ -102,7 +102,7 @@ namespace Training.Ef6.DemoTests.Part4Querying
 		}
 
 		[Fact]
-		public async Task test()
+		public async Task trainee_question_create_relation_with_untracked_entity()
 		{
 			var post = GetTestPost();
 			ContextDbFirst.Posts.Add(post);

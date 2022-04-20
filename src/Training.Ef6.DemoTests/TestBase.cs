@@ -23,6 +23,7 @@ namespace Training.Ef6.DemoTests
 		protected StackOverflow2010Entities ContextDbFirst { get; }
 		protected StackOverflow2010Context ContextCodeFirst { get; }
 		protected StackOverflow2010EntitiesNoProxy ContextDbFirstNoProxy { get; }
+		protected StackOverflow2010EntitiesReadOnly ContextDbFirstReadOnly { get; }
 		protected Stopwatch Stopwatch { get; }
 		protected Random Random { get; }
 
@@ -36,6 +37,7 @@ namespace Training.Ef6.DemoTests
 			ContextDbFirst = new StackOverflow2010Entities();
 			ContextCodeFirst = new StackOverflow2010Context();
 			ContextDbFirstNoProxy = new StackOverflow2010EntitiesNoProxy();
+			ContextDbFirstReadOnly = new StackOverflow2010EntitiesReadOnly();
 
 			Stopwatch = new Stopwatch();
 			Random = new Random();

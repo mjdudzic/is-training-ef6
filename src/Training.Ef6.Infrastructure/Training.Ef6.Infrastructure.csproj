@@ -110,6 +110,7 @@
     <Compile Include="DatabaseFirst\PostType.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DatabaseFirst\StackOverflow2010EntitiesReadOnly.cs" />
     <Compile Include="DatabaseFirst\StackOverflow2010EntitiesNoProxy.cs" />
     <Compile Include="DatabaseFirst\User.cs">
       <DependentUpon>DataModel.tt</DependentUpon>
